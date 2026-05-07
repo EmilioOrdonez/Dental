@@ -3,412 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIANDENT - Consultorio y Depósito Dental</title>
-    
-    <!-- Framework de Estilos -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@400;600;700&display=swap');
-        
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
-        
-        .hero-bg {
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
-                        url('https://images.unsplash.com/photo-1629909608135-ca2345b1448b?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
-        }
-        
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 90px; 
-            background-color: #25d366;
-            color: white;
-            border-radius: 50px;
-            padding: 15px;
-            font-size: 28px;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
-
-        .service-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid #f1f5f9;
-        }
-        .service-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-            border-color: #38bdf8;
-        }
-
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        /* Sparkle UI Elements */
-        .sparkle-border {
-            position: relative;
-            background: linear-gradient(white, white) padding-box,
-                        linear-gradient(to right, #38bdf8, #2dd4bf) border-box;
-            border: 2px solid transparent;
-        }
-    </style>
-</head>
-<body class="bg-slate-50 text-slate-800">
-
-    <!-- Navegación Sticky -->
-    <nav class="fixed w-full z-50 glass-nav border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
-            <div class="flex items-center">
-                <span class="text-2xl font-bold text-blue-950 tracking-tighter uppercase">Viandent <sup class="text-xs text-sky-500 font-normal">v0.7</sup></span>
-            </div>
-            <div class="hidden md:flex space-x-8 items-center font-bold text-xs uppercase tracking-widest text-slate-600">
-                <a href="#inicio" class="hover:text-blue-900 transition">Inicio</a>
-                <a href="#ia-consultorio" class="text-sky-600 hover:text-sky-700 transition">Consultorio IA ✨</a>
-                <a href="#nosotros" class="hover:text-blue-900 transition">Experiencia</a>
-                <a href="#servicios" class="hover:text-blue-900 transition">Especialidades</a>
-                <a href="https://wa.me/5215512345678" target="_blank" class="bg-blue-950 text-white px-8 py-3 rounded-full hover:bg-blue-800 shadow-xl transition-all">
-                    Agendar Cita
-                </a>
-            </div>
-            <div class="md:hidden text-2xl text-blue-950">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Botón WhatsApp Flotante -->
-    <a href="https://wa.me/5215512345678" target="_blank" class="whatsapp-float" aria-label="Contacto por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- SECCIÓN HERO -->
-    <section id="inicio" class="hero-bg min-h-screen flex items-center pt-20">
-        <div class="max-w-7xl mx-auto px-4 w-full">
-            <div class="max-w-3xl animate-fade-in">
-                <span class="inline-block bg-sky-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full mb-6 tracking-[0.3em] uppercase">Confianza • Calidad • Iztacalco</span>
-                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-[1.1]">
-                    Cuidamos tu sonrisa <br><span class="text-sky-400 font-light italic">con experiencia real.</span>
-                </h1>
-                <p class="text-xl text-slate-200 mb-10 leading-relaxed font-light max-w-2xl">
-                    Más de 25 años de trayectoria en Agrícola Pantitlán. Somos el único centro que combina **Consultorio y Depósito Dental**, garantizando insumos de primer nivel.
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#ia-consultorio" class="bg-sky-500 hover:bg-sky-400 text-white px-10 py-5 rounded-2xl text-lg font-bold shadow-2xl transition transform hover:-translate-y-1">
-                        Consultorio Virtual ✨
-                    </a>
-                    <a href="#servicios" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/20 transition">
-                        Nuestros Servicios
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN: CONSULTORIO VIRTUAL GEMINI -->
-    <section id="ia-consultorio" class="py-24 bg-white relative overflow-hidden">
-        <div class="max-w-5xl mx-auto px-4">
-            <div class="sparkle-border bg-white rounded-[3rem] p-8 md:p-12 shadow-2xl flex flex-col md:flex-row gap-12 items-center">
-                <div class="md:w-1/2">
-                    <div class="inline-flex items-center gap-2 bg-sky-100 text-sky-700 px-4 py-1 rounded-full text-xs font-bold uppercase mb-4 tracking-wider">
-                        <i class="fas fa-sparkles text-sky-500"></i> Tecnología de Vanguardia
-                    </div>
-                    <h2 class="text-4xl font-bold text-slate-900 mb-6">Analiza tus síntomas con nuestra IA ✨</h2>
-                    <p class="text-slate-600 mb-8 leading-relaxed">
-                        ¿Tienes una duda dental o sientes alguna molestia? Describe lo que sientes y nuestra Inteligencia Artificial, entrenada con los estándares de **VIANDENT**, te brindará una orientación preliminar y recomendará el mejor tratamiento para ti.
-                    </p>
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 italic text-sm text-slate-500">
-                        <i class="fas fa-info-circle mr-2"></i> Esta herramienta es informativa y no sustituye un diagnóstico médico profesional en consultorio.
-                    </div>
-                </div>
-                
-                <div class="md:w-1/2 w-full">
-                    <div class="bg-slate-50 p-6 rounded-[2rem] shadow-inner border border-slate-200">
-                        <div id="ai-status-indicator" class="text-[10px] font-bold mb-3 flex items-center gap-2 px-3 py-2 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200">
-                            <i class="fas fa-check-circle"></i> <span id="status-text">Conectado</span>
-                        </div>
-                        <div id="ai-chat-window" class="h-64 overflow-y-auto mb-4 space-y-4 p-2 custom-scrollbar">
-                            <div class="bg-sky-500 text-white p-4 rounded-2xl rounded-tl-none max-w-[85%] text-sm shadow-sm">
-                                ¡Hola! Soy el asistente virtual de VIANDENT ✨. ¿En qué puedo ayudarte con tu salud dental hoy?
-                            </div>
-                        </div>
-
-                        <div class="relative">
-                            <textarea id="ai-user-input" rows="2" class="w-full bg-white border border-slate-200 rounded-2xl px-4 py-3 pr-12 focus:ring-2 focus:ring-sky-500 focus:border-transparent outline-none transition text-sm resize-none" placeholder="Ej: Me duele una muela al comer cosas frías..." maxlength="500"></textarea>
-                            <button id="ai-send-btn" class="absolute right-3 top-1/2 -translate-y-1/2 text-sky-500 hover:text-sky-600 transition p-2 disabled:opacity-50">
-                                <i class="fas fa-paper-plane text-xl"></i>
-                            </button>
-                        </div>
-                        <div id="ai-info" class="text-[10px] text-slate-400 mt-2 flex items-center gap-2">
-                             <i class="fas fa-info-circle"></i> Potenciado por Gemini Flash ✨
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN DE DIFERENCIALES -->
-    <section id="nosotros" class="py-24 bg-slate-50 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-20 items-center">
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=800" alt="Consultorio Moderno" class="rounded-[3rem] shadow-2xl z-10 relative">
-                <div class="absolute -bottom-6 -left-6 bg-sky-500 text-white p-10 rounded-[2.5rem] hidden md:block shadow-2xl">
-                    <p class="text-4xl font-bold">20+</p>
-                    <p class="text-[10px] uppercase tracking-widest font-black opacity-80">Años de Trayectoria</p>
-                </div>
-            </div>
-            <div>
-                <h2 class="text-4xl font-bold text-slate-900 mb-8 leading-tight">¿Por qué elegir VIANDENT?</h2>
-                <p class="text-lg text-slate-600 mb-8 leading-relaxed italic border-l-4 border-sky-500 pl-6">
-                    "Al ser también un depósito dental, tenemos control total sobre la calidad de los materiales que usamos."
-                </p>
-                <div class="space-y-6">
-                    <div class="flex gap-5">
-                        <div class="bg-sky-50 p-4 rounded-2xl text-sky-600 self-start text-xl shadow-sm"><i class="fas fa-shield-virus"></i></div>
-                        <div>
-                            <h4 class="font-bold text-slate-900">Insumos Certificados</h4>
-                            <p class="text-slate-500 text-sm">Materiales de grado profesional directo de nuestro almacén.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-5">
-                        <div class="bg-sky-50 p-4 rounded-2xl text-sky-600 self-start text-xl shadow-sm"><i class="fas fa-user-md"></i></div>
-                        <div>
-                            <h4 class="font-bold text-slate-900">Diagnóstico Ético</h4>
-                            <p class="text-slate-500 text-sm">Tratamientos basados en honestidad total.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN SERVICIOS -->
-    <section id="servicios" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl font-bold text-blue-950 mb-4 tracking-tight uppercase">Nuestras Especialidades</h2>
-                <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full"></div>
-            </div>
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="service-card bg-slate-50 p-10 rounded-[3rem] shadow-sm text-center">
-                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-inner mx-auto">
-                        <i class="fas fa-tooth"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-blue-950">General e Integral</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mx-auto italic">Limpiezas profundas y prevención.</p>
-                </div>
-                <div class="service-card bg-slate-50 p-10 rounded-[3rem] shadow-sm text-center">
-                    <div class="w-16 h-16 bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-inner mx-auto">
-                        <i class="fas fa-grin-beam"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-blue-950">Estética y Ortodoncia</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mx-auto italic">Diseño de sonrisa personalizado.</p>
-                </div>
-                <div class="service-card bg-blue-950 p-10 rounded-[3rem] shadow-xl text-white text-center">
-                    <div class="w-16 h-16 bg-white/10 text-sky-400 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-inner mx-auto">
-                        <i class="fas fa-box-open"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Depósito Dental</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed mx-auto italic">Insumos para profesionales.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MAPA Y FOOTER -->
-    <footer id="contacto" class="bg-blue-950 text-white/50 pt-24 pb-12 overflow-hidden relative">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center border-b border-white/5 pb-20 text-center md:text-left">
-            <div>
-                <h2 class="text-4xl font-bold text-white mb-8 italic">Visítanos hoy.</h2>
-                <div class="space-y-6 text-slate-300">
-                    <div class="flex items-center gap-4 justify-center md:justify-start">
-                        <i class="fas fa-map-marker-alt text-sky-400 text-xl"></i>
-                        <p>Sur 12-B 132, Agrícola Pantitlán, Iztacalco, CDMX.</p>
-                    </div>
-                    <div class="flex items-center gap-4 justify-center md:justify-start">
-                        <i class="fas fa-clock text-sky-400 text-xl"></i>
-                        <div>
-                            <p class="font-bold text-white tracking-wide">Lunes a Viernes: 10:00 - 19:00</p>
-                            <p>Sábado: 10:00 - 14:00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-12">
-                    <a href="https://wa.me/5215512345678" target="_blank" class="inline-block bg-sky-500 text-white px-10 py-5 rounded-2xl font-bold hover:bg-sky-400 transition-all shadow-xl">
-                        WhatsApp Directo
-                    </a>
-                </div>
-            </div>
-            <div class="rounded-[3rem] overflow-hidden h-[350px] shadow-2xl border-8 border-white/5">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.5855474327593!2d-99.0725881242371!3d19.410717281861757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fd83be22c757%3A0xc5617cd9cc1b39bf!2sCONSULTORIO%20Y%20DEPOSITO%20DENTAL%20VIANDENT!5e0!3m2!1ses-419!2smx!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-4 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
-            <span class="text-xl font-bold text-white tracking-tighter uppercase">Viandent</span>
-            <p class="text-[10px] uppercase tracking-widest font-bold">
-                © 2026 VIANDENT. Salud Dental Profesional.
-            </p>
-        </div>
-    </footer>
-
-    <!-- Lógica de la IA Gemini -->
-    <script>
-        // ⚠️ IMPORTANTE: La clave API ahora está protegida en el backend (.env)
-        // El frontend ahora usa un proxy seguro a través de /api/chat
-
-
-        async function callGemini(prompt, retries = 3, delay = 1000) {
-            // Usar el backend proxy en lugar de llamar directamente a Gemini
-            const url = '/api/chat';
-
-            for (let i = 0; i < retries; i++) {
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ message: prompt })
-                    });
-
-                    if (!response.ok) {
-                        const errorData = await response.json();
-                        console.error('Backend Error Response:', response.status, errorData);
-                        throw new Error(`Backend Error ${response.status}: ${errorData?.error || 'Unknown error'}`);
-                    }
-
-                    const data = await response.json();
-                    return data.response;
-                } catch (error) {
-                    console.error(`Intento ${i + 1}/${retries} - Error:`, error.message);
-                    if (i === retries - 1) throw error;
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    delay *= 2;
-                }
-            }
-        }
-
-        function appendMessage(text, isUser = false) {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = isUser 
-                ? "bg-slate-200 text-slate-800 p-4 rounded-2xl rounded-tr-none max-w-[85%] text-sm shadow-sm ml-auto"
-                : "bg-sky-500 text-white p-4 rounded-2xl rounded-tl-none max-w-[85%] text-sm shadow-sm";
-            msgDiv.innerText = text;
-            aiWindow.appendChild(msgDiv);
-            aiWindow.scrollTop = aiWindow.scrollHeight;
-        }
-
-        function updateConnectionStatus(connected, message = null) {
-            isConnected = connected;
-            const statusText = document.getElementById('status-text');
-            const statusIndicator = document.getElementById('ai-status-indicator');
-            
-            if (connected) {
-                statusIndicator.className = "text-[10px] font-bold mb-3 flex items-center gap-2 px-3 py-2 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200";
-                statusText.innerText = "Conectado";
-            } else {
-                statusIndicator.className = "text-[10px] font-bold mb-3 flex items-center gap-2 px-3 py-2 bg-red-50 text-red-700 rounded-lg border border-red-200";
-                statusText.innerText = message || "Desconectado";
-            }
-        }
-
-        async function handleSend() {
-            const text = userInput.value.trim();
-            if (!text) return;
-            if (text.length > 500) {
-                appendMessage("❌ El mensaje es muy largo (máximo 500 caracteres)", false);
-                return;
-            }
-            if (!isConnected) {
-                appendMessage("❌ El servicio no está disponible en este momento. Por favor contacta por WhatsApp.", false);
-                return;
-            }
-
-            appendMessage(text, true);
-            userInput.value = "";
-            sendBtn.disabled = true;
-
-            const loadingId = "loading-" + Date.now();
-            const loadingDiv = document.createElement('div');
-            loadingDiv.id = loadingId;
-            loadingDiv.className = "text-xs text-slate-400 italic px-2 flex items-center gap-2";
-            loadingDiv.innerHTML = '<i class="fas fa-circle-notch animate-spin"></i> VIANDENT IA ✨ está analizando...';
-            aiWindow.appendChild(loadingDiv);
-            aiWindow.scrollTop = aiWindow.scrollHeight;
-
-            try {
-                const response = await callGemini(text);
-                const loadingElement = document.getElementById(loadingId);
-                if (loadingElement) loadingElement.remove();
-                
-                if (!response) {
-                    updateConnectionStatus(false, "Error en API");
-                    appendMessage("❌ No pude procesar tu solicitud. Intenta de nuevo o contáctanos por WhatsApp.");
-                } else {
-                    updateConnectionStatus(true);
-                    appendMessage(response);
-                }
-            } catch (error) {
-                console.error('Error en IA:', error);
-                const loadingElement = document.getElementById(loadingId);
-                if (loadingElement) loadingElement.remove();
-                
-                updateConnectionStatus(false, "Error de conexión");
-                if (error.message.includes('API')) {
-                    appendMessage("❌ Error de API. Verifica tu conexión o contacta por WhatsApp para asistencia inmediata.");
-                } else if (error.message.includes('CORS')) {
-                    appendMessage("❌ Error de seguridad CORS. Este servicio requiere un backend proxy. Contáctanos por WhatsApp.");
-                } else {
-                    appendMessage("❌ Error inesperado. Por favor, intenta de nuevo o contáctanos por WhatsApp.");
-                }
-            } finally {
-                sendBtn.disabled = false;
-            }
-        }
-
-        sendBtn.addEventListener('click', handleSend);
-        userInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleSend();
-            }
-        });
-    </script>
-</body>
-=======
-<!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIANDENT - Consultorio y Depósito Dental en Iztacalco</title>
     
-    <!-- Framework de Estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@400;600;700&display=swap');
-        
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3 { font-family: 'Poppins', sans-serif; }
         
@@ -418,103 +19,59 @@
         }
         
         .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 90px; 
-            background-color: #25d366;
-            color: white;
-            border-radius: 50px;
-            padding: 15px;
-            font-size: 28px;
+            position: fixed; bottom: 30px; right: 30px; 
+            background-color: #25d366; color: white;
+            border-radius: 50px; padding: 15px; font-size: 28px;
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            z-index: 1000; transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
         }
         .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
 
-        .service-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid #f1f5f9;
-        }
-        .service-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-            border-color: #38bdf8;
-        }
-
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        /* Sparkle UI Elements */
         .sparkle-border {
             position: relative;
             background: linear-gradient(white, white) padding-box,
                         linear-gradient(to right, #38bdf8, #2dd4bf) border-box;
             border: 2px solid transparent;
         }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-    <!-- Navegación Sticky -->
     <nav class="fixed w-full z-50 glass-nav border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
-            <div class="flex items-center">
-                <span class="text-2xl font-bold text-blue-950 tracking-tighter uppercase">Viandent <sup class="text-xs text-sky-500 font-normal">v0.7</sup></span>
-            </div>
+            <span class="text-2xl font-bold text-blue-950 tracking-tighter uppercase">Viandent <sup class="text-xs text-sky-500 font-normal">v1.0</sup></span>
             <div class="hidden md:flex space-x-8 items-center font-bold text-xs uppercase tracking-widest text-slate-600">
                 <a href="#inicio" class="hover:text-blue-900 transition">Inicio</a>
                 <a href="#ia-consultorio" class="text-sky-600 hover:text-sky-700 transition">Consultorio IA ✨</a>
-                <a href="#nosotros" class="hover:text-blue-900 transition">Experiencia</a>
-                <a href="#servicios" class="hover:text-blue-900 transition">Especialidades</a>
                 <a href="https://wa.me/5215512345678" target="_blank" class="bg-blue-950 text-white px-8 py-3 rounded-full hover:bg-blue-800 shadow-xl transition-all">
                     Agendar Cita
                 </a>
             </div>
-            <div class="md:hidden text-2xl text-blue-950">
-                <i class="fas fa-bars"></i>
-            </div>
         </div>
     </nav>
 
-    <!-- Botón WhatsApp Flotante -->
-    <a href="https://wa.me/5215512345678" target="_blank" class="whatsapp-float" aria-label="Contacto por WhatsApp">
+    <a href="https://wa.me/5215512345678" target="_blank" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- SECCIÓN HERO -->
     <section id="inicio" class="hero-bg min-h-screen flex items-center pt-20">
         <div class="max-w-7xl mx-auto px-4 w-full">
-            <div class="max-w-3xl animate-fade-in">
-                <span class="inline-block bg-sky-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full mb-6 tracking-[0.3em] uppercase">Confianza • Calidad • Iztacalco</span>
+            <div class="max-w-3xl">
+                <span class="inline-block bg-sky-500 text-white text-[10px] font-black px-4 py-1.5 rounded-full mb-6 tracking-[0.3em] uppercase">Iztacalco</span>
                 <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-[1.1]">
                     Cuidamos tu sonrisa <br><span class="text-sky-400 font-light italic">con experiencia real.</span>
                 </h1>
                 <p class="text-xl text-slate-200 mb-10 leading-relaxed font-light max-w-2xl">
-                    Más de 25 años de trayectoria en Agrícola Pantitlán. Somos el único centro que combina **Consultorio y Depósito Dental**, garantizando insumos de primer nivel.
+                    Más de 20 años de trayectoria en Agrícola Pantitlán. Somos el único centro que combina Consultorio y Depósito Dental.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#ia-consultorio" class="bg-sky-500 hover:bg-sky-400 text-white px-10 py-5 rounded-2xl text-lg font-bold shadow-2xl transition transform hover:-translate-y-1">
-                        Consultorio Virtual ✨
-                    </a>
-                    <a href="#servicios" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-white/20 transition">
-                        Nuestros Servicios
-                    </a>
-                </div>
+                <a href="#ia-consultorio" class="bg-sky-500 hover:bg-sky-400 text-white px-10 py-5 rounded-2xl text-lg font-bold shadow-2xl transition transform hover:-translate-y-1 inline-block">
+                    Consultorio Virtual ✨
+                </a>
             </div>
         </div>
     </section>
@@ -527,20 +84,14 @@
                     <div class="inline-flex items-center gap-2 bg-sky-100 text-sky-700 px-4 py-1 rounded-full text-xs font-bold uppercase mb-4 tracking-wider">
                         <i class="fas fa-sparkles text-sky-500"></i> Tecnología de Vanguardia
                     </div>
-                    <h2 class="text-4xl font-bold text-slate-900 mb-6">Analiza tus síntomas con nuestra IA ✨</h2>
+                    <h2 class="text-4xl font-bold text-slate-900 mb-6">Analiza tus síntomas ✨</h2>
                     <p class="text-slate-600 mb-8 leading-relaxed">
-                        ¿Tienes una duda dental o sientes alguna molestia? Describe lo que sientes y nuestra Inteligencia Artificial, entrenada con los estándares de **VIANDENT**, te brindará una orientación preliminar y recomendará el mejor tratamiento para ti.
+                        Describe lo que sientes y nuestra Inteligencia Artificial te brindará una orientación preliminar y recomendará el mejor tratamiento para ti.
                     </p>
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 italic text-sm text-slate-500">
-                        <i class="fas fa-info-circle mr-2"></i> Esta herramienta es informativa y no sustituye un diagnóstico médico profesional en consultorio.
-                    </div>
                 </div>
                 
                 <div class="md:w-1/2 w-full">
                     <div class="bg-slate-50 p-6 rounded-[2rem] shadow-inner border border-slate-200">
-                        <div id="ai-status-indicator" class="text-[10px] font-bold mb-3 flex items-center gap-2 px-3 py-2 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200">
-                            <i class="fas fa-check-circle"></i> <span id="status-text">Conectado</span>
-                        </div>
                         <div id="ai-chat-window" class="h-64 overflow-y-auto mb-4 space-y-4 p-2 custom-scrollbar">
                             <div class="bg-sky-500 text-white p-4 rounded-2xl rounded-tl-none max-w-[85%] text-sm shadow-sm">
                                 ¡Hola! Soy el asistente virtual de VIANDENT ✨. ¿En qué puedo ayudarte con tu salud dental hoy?
@@ -548,172 +99,23 @@
                         </div>
 
                         <div class="relative">
-                            <textarea id="ai-user-input" rows="2" class="w-full bg-white border border-slate-200 rounded-2xl px-4 py-3 pr-12 focus:ring-2 focus:ring-sky-500 focus:border-transparent outline-none transition text-sm resize-none" placeholder="Ej: Me duele una muela al comer cosas frías..." maxlength="500"></textarea>
+                            <textarea id="ai-user-input" rows="2" class="w-full bg-white border border-slate-200 rounded-2xl px-4 py-3 pr-12 focus:ring-2 focus:ring-sky-500 focus:border-transparent outline-none transition text-sm resize-none" placeholder="Ej: Me duele una muela..." maxlength="500"></textarea>
                             <button id="ai-send-btn" class="absolute right-3 top-1/2 -translate-y-1/2 text-sky-500 hover:text-sky-600 transition p-2 disabled:opacity-50">
                                 <i class="fas fa-paper-plane text-xl"></i>
                             </button>
                         </div>
-                        <div id="ai-info" class="text-[10px] text-slate-400 mt-2 flex items-center gap-2">
-                             <i class="fas fa-info-circle"></i> Potenciado por Gemini Flash ✨
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN DE DIFERENCIALES -->
-    <section id="nosotros" class="py-24 bg-slate-50 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-20 items-center">
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=800" alt="Consultorio Moderno" class="rounded-[3rem] shadow-2xl z-10 relative">
-                <div class="absolute -bottom-6 -left-6 bg-sky-500 text-white p-10 rounded-[2.5rem] hidden md:block shadow-2xl">
-                    <p class="text-4xl font-bold">20+</p>
-                    <p class="text-[10px] uppercase tracking-widest font-black opacity-80">Años de Trayectoria</p>
-                </div>
-            </div>
-            <div>
-                <h2 class="text-4xl font-bold text-slate-900 mb-8 leading-tight">¿Por qué elegir VIANDENT?</h2>
-                <p class="text-lg text-slate-600 mb-8 leading-relaxed italic border-l-4 border-sky-500 pl-6">
-                    "Al ser también un depósito dental, tenemos control total sobre la calidad de los materiales que usamos."
-                </p>
-                <div class="space-y-6">
-                    <div class="flex gap-5">
-                        <div class="bg-sky-50 p-4 rounded-2xl text-sky-600 self-start text-xl shadow-sm"><i class="fas fa-shield-virus"></i></div>
-                        <div>
-                            <h4 class="font-bold text-slate-900">Insumos Certificados</h4>
-                            <p class="text-slate-500 text-sm">Materiales de grado profesional directo de nuestro almacén.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-5">
-                        <div class="bg-sky-50 p-4 rounded-2xl text-sky-600 self-start text-xl shadow-sm"><i class="fas fa-user-md"></i></div>
-                        <div>
-                            <h4 class="font-bold text-slate-900">Diagnóstico Ético</h4>
-                            <p class="text-slate-500 text-sm">Tratamientos basados en honestidad total.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCIÓN SERVICIOS -->
-    <section id="servicios" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl font-bold text-blue-950 mb-4 tracking-tight uppercase">Nuestras Especialidades</h2>
-                <div class="w-24 h-1.5 bg-sky-500 mx-auto rounded-full"></div>
-            </div>
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="service-card bg-slate-50 p-10 rounded-[3rem] shadow-sm text-center">
-                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-inner mx-auto">
-                        <i class="fas fa-tooth"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-blue-950">General e Integral</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mx-auto italic">Limpiezas profundas y prevención.</p>
-                </div>
-                <div class="service-card bg-slate-50 p-10 rounded-[3rem] shadow-sm text-center">
-                    <div class="w-16 h-16 bg-sky-50 text-sky-600 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-inner mx-auto">
-                        <i class="fas fa-grin-beam"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-blue-950">Estética y Ortodoncia</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed mx-auto italic">Diseño de sonrisa personalizado.</p>
-                </div>
-                <div class="service-card bg-blue-950 p-10 rounded-[3rem] shadow-xl text-white text-center">
-                    <div class="w-16 h-16 bg-white/10 text-sky-400 rounded-2xl flex items-center justify-center text-3xl mb-8 shadow-inner mx-auto">
-                        <i class="fas fa-box-open"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">Depósito Dental</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed mx-auto italic">Insumos para profesionales.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MAPA Y FOOTER -->
-    <footer id="contacto" class="bg-blue-950 text-white/50 pt-24 pb-12 overflow-hidden relative">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16 items-center border-b border-white/5 pb-20 text-center md:text-left">
-            <div>
-                <h2 class="text-4xl font-bold text-white mb-8 italic">Visítanos hoy.</h2>
-                <div class="space-y-6 text-slate-300">
-                    <div class="flex items-center gap-4 justify-center md:justify-start">
-                        <i class="fas fa-map-marker-alt text-sky-400 text-xl"></i>
-                        <p>Sur 12-B 132, Agrícola Pantitlán, Iztacalco, CDMX.</p>
-                    </div>
-                    <div class="flex items-center gap-4 justify-center md:justify-start">
-                        <i class="fas fa-clock text-sky-400 text-xl"></i>
-                        <div>
-                            <p class="font-bold text-white tracking-wide">Lunes a Viernes: 10:00 - 19:00</p>
-                            <p>Sábado: 10:00 - 14:00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-12">
-                    <a href="https://wa.me/5215512345678" target="_blank" class="inline-block bg-sky-500 text-white px-10 py-5 rounded-2xl font-bold hover:bg-sky-400 transition-all shadow-xl">
-                        WhatsApp Directo
-                    </a>
-                </div>
-            </div>
-            <div class="rounded-[3rem] overflow-hidden h-[350px] shadow-2xl border-8 border-white/5">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.5855474327593!2d-99.0725881242371!3d19.410717281861757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fd83be22c757%3A0xc5617cd9cc1b39bf!2sCONSULTORIO%20Y%20DEPOSITO%20DENTAL%20VIANDENT!5e0!3m2!1ses-419!2smx!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-4 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
-            <span class="text-xl font-bold text-white tracking-tighter uppercase">Viandent</span>
-            <p class="text-[10px] uppercase tracking-widest font-bold">
-                © 2026 VIANDENT. Salud Dental Profesional.
-            </p>
-        </div>
-    </footer>
-
-    <!-- Lógica de la IA Gemini -->
+    <!-- Script de Integración con tu Backend en Vercel -->
     <script>
-        // ⚠️ IMPORTANTE: La clave API ahora está protegida en el backend (.env)
-        // El frontend ahora usa un proxy seguro a través de /api/chat
+        // Variables del DOM (ahora sendBtn sí está declarada correctamente)
         const aiWindow = document.getElementById('ai-chat-window');
         const userInput = document.getElementById('ai-user-input');
         const sendBtn = document.getElementById('ai-send-btn');
-        const statusText = document.getElementById('status-text');
-        const statusIndicator = document.getElementById('ai-status-indicator');
-        let isConnected = true;
-        
-        const systemPrompt = `Eres el asistente virtual experto de VIANDENT, un consultorio y depósito dental en Iztacalco, México, con más de 20 años de experiencia. 
-        Tu objetivo es orientar a los pacientes sobre sus síntomas y recomendar el servicio adecuado (Odontología General, Ortodoncia o Estética). 
-        IMPORTANTE: 
-        1. Debes incluir SIEMPRE una nota indicando que eres una IA y que esto no reemplaza una consulta médica profesional.
-        2. Sé profesional, empático y anima a los usuarios a agendar una cita mediante el botón de WhatsApp de la página.
-        3. Menciona la calidad de nuestros materiales, ya que también somos depósito dental. 
-        4. Responde de forma concisa y en español.`;
-
-        async function callGemini(prompt, retries = 3, delay = 1000) {
-            // Usar el backend proxy en lugar de llamar directamente a Gemini
-            const url = '/api/chat';
-
-            for (let i = 0; i < retries; i++) {
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ message: prompt })
-                    });
-
-                    if (!response.ok) {
-                        const errorData = await response.json();
-                        console.error('Backend Error Response:', response.status, errorData);
-                        throw new Error(`Backend Error ${response.status}: ${errorData?.error || 'Unknown error'}`);
-                    }
-
-                    const data = await response.json();
-                    return data.response;
-                } catch (error) {
-                    console.error(`Intento ${i + 1}/${retries} - Error:`, error.message);
-                    if (i === retries - 1) throw error;
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    delay *= 2;
-                }
-            }
-        }
 
         function appendMessage(text, isUser = false) {
             const msgDiv = document.createElement('div');
@@ -725,31 +127,9 @@
             aiWindow.scrollTop = aiWindow.scrollHeight;
         }
 
-        function updateConnectionStatus(connected, message = null) {
-            isConnected = connected;
-            const statusText = document.getElementById('status-text');
-            const statusIndicator = document.getElementById('ai-status-indicator');
-            
-            if (connected) {
-                statusIndicator.className = "text-[10px] font-bold mb-3 flex items-center gap-2 px-3 py-2 bg-emerald-50 text-emerald-700 rounded-lg border border-emerald-200";
-                statusText.innerText = "Conectado";
-            } else {
-                statusIndicator.className = "text-[10px] font-bold mb-3 flex items-center gap-2 px-3 py-2 bg-red-50 text-red-700 rounded-lg border border-red-200";
-                statusText.innerText = message || "Desconectado";
-            }
-        }
-
         async function handleSend() {
             const text = userInput.value.trim();
             if (!text) return;
-            if (text.length > 500) {
-                appendMessage("❌ El mensaje es muy largo (máximo 500 caracteres)", false);
-                return;
-            }
-            if (!isConnected) {
-                appendMessage("❌ El servicio no está disponible en este momento. Por favor contacta por WhatsApp.", false);
-                return;
-            }
 
             appendMessage(text, true);
             userInput.value = "";
@@ -759,35 +139,30 @@
             const loadingDiv = document.createElement('div');
             loadingDiv.id = loadingId;
             loadingDiv.className = "text-xs text-slate-400 italic px-2 flex items-center gap-2";
-            loadingDiv.innerHTML = '<i class="fas fa-circle-notch animate-spin"></i> VIANDENT IA ✨ está analizando...';
+            loadingDiv.innerHTML = '<i class="fas fa-circle-notch animate-spin"></i> Analizando...';
             aiWindow.appendChild(loadingDiv);
             aiWindow.scrollTop = aiWindow.scrollHeight;
 
             try {
-                const response = await callGemini(text);
-                const loadingElement = document.getElementById(loadingId);
-                if (loadingElement) loadingElement.remove();
-                
-                if (!response) {
-                    updateConnectionStatus(false, "Error en API");
-                    appendMessage("❌ No pude procesar tu solicitud. Intenta de nuevo o contáctanos por WhatsApp.");
-                } else {
-                    updateConnectionStatus(true);
-                    appendMessage(response);
+                // Llamamos a tu backend alojado en Vercel
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text })
+                });
+
+                const data = await response.json();
+                document.getElementById(loadingId).remove();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Error en el servidor');
                 }
+
+                appendMessage(data.response);
             } catch (error) {
-                console.error('Error en IA:', error);
-                const loadingElement = document.getElementById(loadingId);
-                if (loadingElement) loadingElement.remove();
-                
-                updateConnectionStatus(false, "Error de conexión");
-                if (error.message.includes('API')) {
-                    appendMessage("❌ Error de API. Verifica tu conexión o contacta por WhatsApp para asistencia inmediata.");
-                } else if (error.message.includes('CORS')) {
-                    appendMessage("❌ Error de seguridad CORS. Este servicio requiere un backend proxy. Contáctanos por WhatsApp.");
-                } else {
-                    appendMessage("❌ Error inesperado. Por favor, intenta de nuevo o contáctanos por WhatsApp.");
-                }
+                console.error('Error:', error);
+                document.getElementById(loadingId).remove();
+                appendMessage("❌ Error de conexión. Por favor, asegúrate de que la API KEY esté configurada en Vercel e intenta de nuevo.");
             } finally {
                 sendBtn.disabled = false;
             }
