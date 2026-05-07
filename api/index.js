@@ -125,7 +125,6 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
-=======
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -253,4 +252,3 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
->>>>>>> e76122fb1f5d22d725def40b340c9f5e3044d848

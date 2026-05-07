@@ -275,20 +275,7 @@
     <script>
         // ⚠️ IMPORTANTE: La clave API ahora está protegida en el backend (.env)
         // El frontend ahora usa un proxy seguro a través de /api/chat
-        const aiWindow = document.getElementById('ai-chat-window');
-        const userInput = document.getElementById('ai-user-input');
-        const sendBtn = document.getElementById('ai-send-btn');
-        const statusText = document.getElementById('status-text');
-        const statusIndicator = document.getElementById('ai-status-indicator');
-        let isConnected = true;
-        
-        const systemPrompt = `Eres el asistente virtual experto de VIANDENT, un consultorio y depósito dental en Iztacalco, México, con más de 20 años de experiencia. 
-        Tu objetivo es orientar a los pacientes sobre sus síntomas y recomendar el servicio adecuado (Odontología General, Ortodoncia o Estética). 
-        IMPORTANTE: 
-        1. Debes incluir SIEMPRE una nota indicando que eres una IA y que esto no reemplaza una consulta médica profesional.
-        2. Sé profesional, empático y anima a los usuarios a agendar una cita mediante el botón de WhatsApp de la página.
-        3. Menciona la calidad de nuestros materiales, ya que también somos depósito dental. 
-        4. Responde de forma concisa y en español.`;
+
 
         async function callGemini(prompt, retries = 3, delay = 1000) {
             // Usar el backend proxy en lugar de llamar directamente a Gemini

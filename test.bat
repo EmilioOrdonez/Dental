@@ -83,5 +83,4 @@ echo ========================================
 echo.
 echo Si todo está OK, abre: http://localhost:3000
 echo.
->>>>>>> e76122fb1f5d22d725def40b340c9f5e3044d848
 pause

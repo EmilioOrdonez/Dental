@@ -1,10 +1,4 @@
 
-# Clave API de Google Gemini
-GEMINI_API_KEY=AIzaSyDldhoFVKZb-PIWxWg4mJXRsRqC3_Eirto
-
-# Puerto del servidor
-PORT=3000
-
 # Modelo de Gemini a usar
 =======
 # Clave API de Google Gemini

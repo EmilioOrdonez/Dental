@@ -98,6 +98,4 @@ echo ========================================
 echo.
 echo Presiona Ctrl+C para detener el servidor
 echo.
-
->>>>>>> e76122fb1f5d22d725def40b340c9f5e3044d848
 npm start
