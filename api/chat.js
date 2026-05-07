@@ -3,7 +3,6 @@
  * Ruta automática: /api/chat
  */
 module.exports = async function handler(req, res) {
-    // 1. CORS
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -19,32 +18,45 @@ module.exports = async function handler(req, res) {
             return res.status(500).json({ error: 'Falta la GEMINI_API_KEY en Vercel.' });
         }
 
-        // 2. Unimos las instrucciones y el mensaje en un solo texto
-        const systemPrompt = `Eres el asistente virtual experto de VIANDENT. Aclara siempre que eres una IA y anima a agendar cita por WhatsApp. Responde de forma concisa y en español.`;
-        const fullMessage = `${systemPrompt}\n\nPregunta del paciente: ${message}`;
+        const systemPrompt = `Eres el asistente virtual experto de VIANDENT. Sé conciso y en español.`;
+        const fullMessage = `${systemPrompt}\n\nPaciente: ${message}`;
 
-        // 3. Llamada 100% segura a Google Gemini
-        const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+        // Usamos la versión v1beta que es la oficial para gemini-1.5-flash
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
         
         const geminiResponse = await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                // Ya no usamos "systemInstruction", todo va dentro de "contents"
                 contents: [{ parts: [{ text: fullMessage }] }]
             })
         });
 
         const data = await geminiResponse.json();
 
+        // Si Google rechaza la petición, hacemos el diagnóstico
         if (!geminiResponse.ok) {
-            return res.status(500).json({ error: data.error?.message || "Error en Google API" });
+            const listUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${API_KEY}`;
+            const listRes = await fetch(listUrl);
+            const listData = await listRes.json();
+            
+            let availableModels = "Ninguno (o clave inválida)";
+            if (listData.models) {
+                availableModels = listData.models
+                    .filter(m => m.supportedGenerationMethods.includes('generateContent'))
+                    .map(m => m.name.replace('models/', ''))
+                    .join(', ');
+            }
+            
+            return res.status(500).json({ 
+                error: `Error de Google: ${data.error?.message}. \n\n⚠️ DIAGNÓSTICO: Tu API Key actual solo tiene acceso a: [${availableModels}]. Si está vacío o no incluye 'gemini-1.5-flash', tu clave está bloqueada. Necesitas generar una nueva en Google AI Studio.` 
+            });
         }
 
         const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text;
         return res.status(200).json({ response: aiText });
 
     } catch (error) {
-        return res.status(500).json({ error: error.message });
+        return res.status(500).json({ error: 'Error interno: ' + error.message });
     }
 }
