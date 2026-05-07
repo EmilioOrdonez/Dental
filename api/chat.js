@@ -21,8 +21,8 @@ module.exports = async function handler(req, res) {
         const systemPrompt = `Eres el asistente virtual experto de VIANDENT. Sé conciso y en español.`;
         const fullMessage = `${systemPrompt}\n\nPaciente: ${message}`;
 
-        // Usamos la versión v1beta que es la oficial para gemini-1.5-flash
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+        // ¡AQUÍ ESTÁ LA MAGIA! Cambiamos a gemini-2.5-flash que es el que tu cuenta soporta
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
         
         const geminiResponse = await fetch(url, {
             method: 'POST',
@@ -34,23 +34,8 @@ module.exports = async function handler(req, res) {
 
         const data = await geminiResponse.json();
 
-        // Si Google rechaza la petición, hacemos el diagnóstico
         if (!geminiResponse.ok) {
-            const listUrl = `https://generativelanguage.googleapis.com/v1beta/models?key=${API_KEY}`;
-            const listRes = await fetch(listUrl);
-            const listData = await listRes.json();
-            
-            let availableModels = "Ninguno (o clave inválida)";
-            if (listData.models) {
-                availableModels = listData.models
-                    .filter(m => m.supportedGenerationMethods.includes('generateContent'))
-                    .map(m => m.name.replace('models/', ''))
-                    .join(', ');
-            }
-            
-            return res.status(500).json({ 
-                error: `Error de Google: ${data.error?.message}. \n\n⚠️ DIAGNÓSTICO: Tu API Key actual solo tiene acceso a: [${availableModels}]. Si está vacío o no incluye 'gemini-1.5-flash', tu clave está bloqueada. Necesitas generar una nueva en Google AI Studio.` 
-            });
+            return res.status(500).json({ error: `Error de Google: ${data.error?.message}` });
         }
 
         const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text;
