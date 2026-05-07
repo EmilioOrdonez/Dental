@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Clave API de Google Gemini
 GEMINI_API_KEY=AIzaSyDldhoFVKZb-PIWxWg4mJXRsRqC3_Eirto
 
@@ -5,4 +6,13 @@ GEMINI_API_KEY=AIzaSyDldhoFVKZb-PIWxWg4mJXRsRqC3_Eirto
 PORT=3000
 
 # Modelo de Gemini a usar
+=======
+# Clave API de Google Gemini
+GEMINI_API_KEY=AIzaSyDldhoFVKZb-PIWxWg4mJXRsRqC3_Eirto
+
+# Puerto del servidor
+PORT=3000
+
+# Modelo de Gemini a usar
+>>>>>>> e76122fb1f5d22d725def40b340c9f5e3044d848
 GEMINI_MODEL=gemini-1.5-flash
