@@ -19,17 +19,19 @@ module.exports = async function handler(req, res) {
             return res.status(500).json({ error: 'Falta la GEMINI_API_KEY en Vercel.' });
         }
 
-        const systemPrompt = `Eres el asistente virtual experto de VIANDENT. Sé conciso y anima a agendar cita por WhatsApp.`;
+        // 2. Unimos las instrucciones y el mensaje en un solo texto
+        const systemPrompt = `Eres el asistente virtual experto de VIANDENT. Aclara siempre que eres una IA y anima a agendar cita por WhatsApp. Responde de forma concisa y en español.`;
+        const fullMessage = `${systemPrompt}\n\nPregunta del paciente: ${message}`;
 
-        // USAMOS V1 Y FLASH (Si falla aquí, es seguro que la API Key es el problema)
+        // 3. Llamada 100% segura a Google Gemini
         const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
         
         const geminiResponse = await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                contents: [{ parts: [{ text: message }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] }
+                // Ya no usamos "systemInstruction", todo va dentro de "contents"
+                contents: [{ parts: [{ text: fullMessage }] }]
             })
         });
 
