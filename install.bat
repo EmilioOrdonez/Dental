@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @echo off
 echo ========================================
 echo    VIANDENT Backend - Instalacion
