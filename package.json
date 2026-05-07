@@ -4,6 +4,6 @@
   "description": "Landing page de VIANDENT con IA",
   "main": "api/chat.js",
   "engines": {
-    "node": "18.x"
+    "node": "24.x"
   }
 }
