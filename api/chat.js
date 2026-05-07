@@ -35,27 +35,40 @@ module.exports = async function handler(req, res) {
         const systemPrompt = `Eres el asistente virtual experto de VIANDENT, un consultorio y depósito dental en Iztacalco, México... 
         IMPORTANTE: Aclara siempre que eres una IA y anima a contactar por WhatsApp. Responde de forma concisa.`;
 
-        // Petición a Gemini
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
-        
-        const geminiResponse = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: `Pregunta: ${message}` }] }],
-                systemInstruction: { parts: [{ text: systemPrompt }] }
-            })
-        });
+        // ESTRATEGIA DE FALLBACK: Probamos modelos de mayor a menor probabilidad de soporte
+        const modelsToTry = ['gemini-1.5-flash-latest', 'gemini-1.5-flash', 'gemini-pro'];
+        let aiText = null;
+        let lastError = null;
 
-        const data = await geminiResponse.json();
+        for (const model of modelsToTry) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
+            
+            const geminiResponse = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: `Pregunta: ${message}` }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
+                })
+            });
 
-        // Si Gemini devuelve un error de autenticación u otro
-        if (!geminiResponse.ok) {
-            console.error("Error de la API de Google:", data);
-            return res.status(500).json({ error: data.error?.message || 'Error en Google Gemini API' });
+            const data = await geminiResponse.json();
+
+            // Si la petición es exitosa, guardamos el texto y salimos del bucle
+            if (geminiResponse.ok && data.candidates) {
+                aiText = data.candidates[0].content.parts[0].text;
+                break; 
+            } else {
+                // Si falla, guardamos el error e intentamos con el siguiente modelo
+                lastError = data.error?.message || 'Error desconocido';
+                console.warn(`El modelo ${model} falló:`, lastError);
+            }
         }
 
-        const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Lo siento, no pude procesar la respuesta.";
+        // Si después de probar todos los modelos ninguno funcionó
+        if (!aiText) {
+            return res.status(500).json({ error: `La API de Google rechazó los modelos. Último error: ${lastError}` });
+        }
         
         return res.status(200).json({ response: aiText });
 
